@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header class="header">
+    <span class="header__title">Dashboard</span>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme">
+      <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+    </button>
+  </header>
+
+  <!-- ── STORAGE BANNER (hidden by default) ── -->
+  <div class="banner banner--error" id="storageBanner" role="alert" hidden>
+    ⚠️ Storage unavailable — your data cannot be saved.
+  </div>
+
+  <!-- ── MAIN GRID ── -->
+  <main class="dashboard">
+
+    <!-- GREETING -->
+    <section class="card" id="greeting" aria-label="Greeting widget">
+      <p class="greeting__time" id="greetingTime">00:00</p>
+      <p class="greeting__date" id="greetingDate">Loading...</p>
+      <h1 class="greeting__message" id="greetingMessage">Hello</h1>
+      <div class="greeting__name-form">
+        <label for="nameInput" class="sr-only">Your name</label>
+        <input
+          type="text"
+          id="nameInput"
+          class="input"
+          placeholder="Enter your name…"
+          maxlength="50"
+          aria-label="Enter your name for personalised greeting"
+        />
+        <button class="btn btn--sm" id="saveNameBtn">Save</button>
+      </div>
+    </section>
+
+    <!-- FOCUS TIMER -->
+    <section class="card" id="timer" aria-label="Focus timer">
+      <h2 class="card__title">Focus Timer</h2>
+      <p class="timer__display" id="timerDisplay" aria-live="polite" aria-label="Timer display">25:00</p>
+      <div class="timer__controls">
+        <button class="btn btn--primary" id="startBtn" aria-label="Start timer">Start</button>
+        <button class="btn btn--secondary" id="stopBtn" disabled aria-label="Stop timer">Stop</button>
+        <button class="btn btn--ghost" id="resetBtn" aria-label="Reset timer">Reset</button>
+      </div>
+      <div class="timer__done-banner" id="timerDone" hidden aria-live="assertive">
+        ✅ Session complete! Take a break.
+      </div>
+      <div class="timer__duration-form">
+        <label for="durationInput" class="timer__duration-label">Duration (min):</label>
+        <input
+          type="number"
+          id="durationInput"
+          class="input input--sm"
+          min="1"
+          max="120"
+          value="25"
+          aria-label="Timer duration in minutes"
+        />
+        <button class="btn btn--sm" id="saveDurationBtn">Set</button>
+      </div>
+      <p class="error-msg" id="durationError" hidden></p>
+    </section>
+
+    <!-- TO-DO LIST -->
+    <section class="card" id="todo" aria-label="To-do list">
+      <h2 class="card__title">To-Do</h2>
+      <div class="todo__add-form">
+        <label for="todoInput" class="sr-only">New task</label>
+        <input
+          type="text"
+          id="todoInput"
+          class="input"
+          placeholder="Add a task…"
+          maxlength="500"
+          aria-label="New task description"
+        />
+        <button class="btn btn--primary btn--sm" id="addTodoBtn" aria-label="Add task">Add</button>
+      </div>
+      <p class="error-msg" id="todoError" hidden></p>
+      <ul class="todo__list" id="todoList" aria-label="Task list"></ul>
+    </section>
+
+    <!-- QUICK LINKS -->
+    <section class="card" id="quicklinks" aria-label="Quick links">
+      <h2 class="card__title">Quick Links</h2>
+      <div class="quicklinks__add-form">
+        <label for="linkLabel" class="sr-only">Link label</label>
+        <input
+          type="text"
+          id="linkLabel"
+          class="input"
+          placeholder="Label (e.g. YouTube)"
+          maxlength="100"
+          aria-label="Link label"
+        />
+        <label for="linkUrl" class="sr-only">Link URL</label>
+        <input
+          type="url"
+          id="linkUrl"
+          class="input"
+          placeholder="https://example.com"
+          aria-label="Link URL"
+        />
+        <button class="btn btn--primary btn--sm" id="addLinkBtn" aria-label="Add link">Add</button>
+      </div>
+      <p class="error-msg" id="linkError" hidden></p>
+      <div class="quicklinks__grid" id="linkGrid"></div>
+    </section>
+
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
